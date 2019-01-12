@@ -61,11 +61,11 @@ Image* draw_histo(Image* I)
     }
     printf("\n max freq: %d and full table:\n",max_freq);
 
-    display_arr(H);
+    
+    //display_arr(H); only used to check if it looks right, not essential
     
     //so that the size of each line is proportional to what the frequency without having to draw out of the window
     float ratio = (float)img_histo->height / max_freq;
-    printf("ratio is %f\n",ratio);
     
     //draw a grey line that has the size of value*ratio
     //to do this, the line starts at position [i][height of image - frequency of i]
@@ -75,10 +75,8 @@ Image* draw_histo(Image* I)
         if (H.arr[i] != 0)
         {
             int size_line = H.arr[i]*ratio;
-            printf("x: %d size_line:%d\n", i, size_line);
             for(j=0; j<size_line; j++)
             {
-                printf("i:%d\n",i);
                 set_pixel(img_histo, p_grey, i, img_histo->height - j);
             }
         }
@@ -88,15 +86,3 @@ Image* draw_histo(Image* I)
     return img_histo;
 }
 
-
-/*take arr[200]=5, you want a 5px line.
- i=5
- j=0 to 5
-    setpix(img, grey, 200, 5)
-
- depends on the frequency, if it's 10 it's easy to control, but what about 6000?
- let's say arr[4]=6000. you can't draw a 6000px line, so you need to divide it by something.
- you gotta make sure it's always smaller than the height of the histo's image. so divide it by its height maybe.
- we want max_freq ~= height of image
-
- */

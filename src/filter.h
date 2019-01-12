@@ -2,20 +2,28 @@
 #define FIL_H
 #include "image.h"
 
-typedef struct LUT{
-    int greyscale_before;
-    int greyscale_after;
-   // struct LUT arr[5]; //6 different effects
-}LUT;
+//CREATE ARRAYS CONTAINING LUTs
+//idea: each pixel is given a new greyscale
 
-//cImage* final_LUT(
-void identify_arguments();
-Image* ADDLUM(int parameter, Image* I);
-Image* DIMLUM(int parameter, Image* I);
-Image* ADDCON(int parameter, Image* I);
-Image* DIMCON(int parameter, Image* I);
-Image* INVERT(int parameter, Image* I);
+unsigned char* identify_arguments();
+/*returns a table of LUTs and their parameters, looks like this:
+ 
+(ADDLUM) [0]: 0 or 1 (0 if not called, 1 if called)  (ADDLUM PARAMETER) [1]
+(DIMLUM) [2]: 0 or 1                (ADDLUM PARAMETER) [3]
+(ADDCON) [4]: 0 or 1                (ADDCON PARAMETER) [5]
+(DIMCON) [6]: 0 or 1                (DIMCON PARAMETER) [7]
+(INVERT) [8]: 0 or 1                (INVERT PARAMETER) [9]
+(SEPIA) [10]: 0 or 1                (SEPIA PARAMETER) [11]
+ 
+ */
+
+void ADDLUM(int parameter, Image* I);
+void DIMLUM(int parameter, Image* I);
+void ADDCON(int parameter, Image* I);
+void DIMCON(int parameter, Image* I);
+void INVERT(int parameter, Image* I);
 //SEPIA
+void final_LUT(unsigned char* LUT);
 #endif
 
 

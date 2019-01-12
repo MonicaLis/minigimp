@@ -69,7 +69,7 @@ void fill_image(Image* I, unsigned char r, unsigned char g, unsigned char b)
 
 void test_all_functions()
 {
-    /*
+    
     printf("\n------------------FUNCTIONS IN IMAGE.C, PIXEL.C, PPM.C------------------\n");
     Image* I;
     printf("First of all we load a ppm image and put it inside our variable I.\n");
@@ -113,7 +113,7 @@ void test_all_functions()
     printf("Now we can delete all images and liberate allocated memory.\n");
     delete_image(I);
     delete_image(J);
-     */
+     
     
     printf("\n------------------FUNCTIONS IN HISTO.C------------------\n");
     Image* IMG;
@@ -122,6 +122,7 @@ void test_all_functions()
     IMG = load("../images/art.ppm");
     printf("Let's create a Histo variable, initialise it, and display its array.\n");
     Histo H = initialise_histo();
+    printf("This is the array of the initialised histogram.\n");
     display_arr(H);
     printf("Now let's try creating its histogram.\n");
     HIS = draw_histo(IMG);
