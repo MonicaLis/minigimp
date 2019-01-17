@@ -23,6 +23,7 @@ Image* create_image(int w, int h)
     }
     I->width = w;
     I->height = h;
+    //3 times unsigned char because 3 RGB components per pixel
     I->data = (Pixel*)malloc(I->width * I->height * 3 * sizeof(unsigned char));
     if (!I->data)
     {
@@ -37,7 +38,7 @@ Pixel get_pixel(int x, int y, Image* I)
     return I->data[I->width*y+x]; //because we count pixels from the left to the right, and from the top to bottom
 }
 /*
- example: i want the 2nd pixel on the 3rd line, which would mean coordinates [0][2]. the image is 10x10.
+ example: I want the 2nd pixel on the 3rd line, which would mean coordinates [0][2], the image is 10x10.
  10x2+3: number 23
  0 1 2 3 4 5 6 7 8 9 10
  11 12 13 14 15 16 17 18 19 20
@@ -129,3 +130,11 @@ void test_all_functions()
     printf("Let's save the histogram into a file so we can have a look at it.\n");
     save(HIS, "../images/his.ppm");
 }
+
+
+/*
+ 
+ A METTRE DANS LE DOSSIER
+Finalement pas des fonctions bien compliquées mais j'ai pris beaucoup de temps à comprendre comment allouer de la mémoire à la structure Image, et comme je l'ai déjà dit, j'étais partie sur l'allocation du nombre de pixels et non pas 3*unsigned char.
+ J'ai eu tellement de petits problèmes que je me suis dit que j'allais créer la fonction test_all_functions pour vérifier que tous les petits détails collent. Créer un pixel, lui attribuer des RGB différents, mais aussi tester d'autres fonctions plus complexes comme celle qui crée un histogramme.
+ */

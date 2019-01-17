@@ -11,7 +11,6 @@ Histo initialise_histo()
     {
         H.arr[i] = 0;
     }
-    printf("histogram initialised\n");
     return H;
 }
 
@@ -59,8 +58,6 @@ Image* draw_histo(Image* I)
             }
         }
     }
-    printf("\n max freq: %d and full table:\n",max_freq);
-
     
     //display_arr(H); only used to check if it looks right, not essential
     
@@ -86,3 +83,9 @@ Image* draw_histo(Image* I)
     return img_histo;
 }
 
+/*
+ 
+ A METTRE DANS LE DOSSIER
+ Passé beaucoup de temps la dessus aussi. L'idée c'est de créer une barre grise pour chaque niveau de gris, proportionnelle à sa fréquence. J'ai pris du temps à avoir l'idée du "ratio", en général ca dépassait de l'image et du coup j'avais des fuites de mémoire (difficile d'identifier d'ou elles venaient au début).
+ 
+ */

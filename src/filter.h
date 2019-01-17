@@ -5,7 +5,7 @@
 //CREATE ARRAYS CONTAINING LUTs
 //idea: each pixel is given a new greyscale
 
-unsigned char* identify_arguments();
+int* identify_arguments();
 /*returns a table of LUTs and their parameters, looks like this:
  
 (ADDLUM) [0]: 0 or 1 (0 if not called, 1 if called)  (ADDLUM PARAMETER) [1]
@@ -17,24 +17,9 @@ unsigned char* identify_arguments();
  
  */
 
-void ADDLUM(int parameter, Image* I);
-void DIMLUM(int parameter, Image* I);
-void ADDCON(int parameter, Image* I);
-void DIMCON(int parameter, Image* I);
-void INVERT(int parameter, Image* I);
-//SEPIA
-void final_LUT(unsigned char* LUT);
+unsigned char RGB_value(unsigned char value);
+//to return an unsigned char that's  255 or 0 when calculations in final_LUT give numbers that are too big or too small
+void final_LUT(int* LUT);
+//applies the filters by using the table created by identify_arguments()
+
 #endif
-
-
-/*
- -LUT : look-up table, tableau qui effectue des transformations sur les couleurs
- -NVG défini de départ est associé à un NVG d’arrivée
- -nombre de NVG de départ pas forcément nombre NVG arrivée
- -la combinaison de pl. LUT doit être calculée dans une seule LUT finale
- 
- 
- goal: send back ONE image with multiple effects
- -create one function that identifies which LUT has been called
- -it needs to have as many arguments as you want
- */
